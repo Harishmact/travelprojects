@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+<div class="row">
+	<div class="col-sm-5">
+		<div class="banner" style="margin-top:20px;">
+
+		<img src="{{book.image.url}}" width="650px" height="760px"></div>
+	</div>
+	{% for i in room %}
+	<div class="col-sm-3">
+		<p class="h4" style="margin-top:70px;color:#52f7c3;"><b>{{book.name}}</b></p>
+		<div class="card" style="margin-top:80px;width:300px;height:550px;">
+  			<img src="{{i.dimage.url}}" class="card-img-top" height="200px" width="200px">
+  			<div class="card-body" style="margin-top:20px;width:200px;">
+    			<p style="margin-top:0px;font-size:20px;color:#37158c;font-weight:bold;">Deluxe Room</p>
+   				 <p class="card-text"></p>
+				<i class="bi bi-arrow-90deg-right"></i> <p style="display:inline;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">  20 sq m</p><br><br>
+				<i class="bi bi-people"></i><p style="display:inline;color:#265e06;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">   Sleeps 2</p><br><br>
+				<i class="fa-solid fa-bed"></i> <p style="display:inline;color:#265e06;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">  1 Double Bed</p><br><br>
+				<p style="color:#ed15c2;margin-top:2px;font-size:18px;font-weight:bold;">Amount {{i.d_rent}}Rs per Day</p>
+				<span style="display:inline;color:#265e06;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">No of rooms Available:{{i.d_rooms}}
+				</span>
+   				 <a href="{% url 'accom:tvl' i.name.name %}" class="btn btn-primary mt-2">Reserve</a>
+  			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="card" style="margin-top:180px;width:300px;height:550px;">
+  			<img src="{{i.pimage.url}}" class="card-img-top" height="200px" width="200px">
+			<div class="card-body" style="margin-top:10px;">
+    			<p style="margin-top:2px;font-size:20px;color:#37158c;font-weight:bold;">Premium Room</p>
+    			<p class="card-text"></p>
+				<i class="bi bi-arrow-90deg-right"></i> <p style="display:inline;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">  35 sq m</p><br><br>
+				<i class="bi bi-people"></i><p style="display:inline;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">   Sleeps 4</p><br><br>
+				<i class="fa-solid fa-bed"></i> <p style="display:inline;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">  1 King Bed</p><br><br>
+   				<p style="color:#ed15c2;margin-top:2px;font-size:20px;font-weight:bold;">Amount {{i.p_rent}} Rs per Day</p>
+				<p style="display:inline;color:#265e06;margin-top:2px;font-size:15px;color:#4b74db;font-weight:bold;">No of Rooms Available : {{i.p_rooms}}</p>
+
+				<a href="{% url 'accom:tvl' i.name.name %}" class="btn btn-primary">Reserve</a>
+  			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+</div>
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="socials">
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-google-plus"></a>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+		<script>
+		$(function (){
+			$('#bookingForm').bookingForm({
+				ownerEmail: '#'
+			});
+		})
+		</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<div class="row" style="margin-left:0px; margin-right:0px;">
+		<h3 class="text-warning text-center text-bold">Accommodation Availabilities in  {{loc.dname}} </h3>
+
+		{% for i in hotels %}
+
+		<div class="col-sm-3 mb-5">
+			<div class="card" style="margin-right:15px;width:18rem;margin-left:15px;">
+					<img src="{{i.image.url}}" height="250px" width="300px" class="card-img-top">
+					<div class="card-body mt-1 mr-2" style="height:300px;">
+						<p class="h5 text-danger"><b>{{i.name}}</b></p>
+    					<p class="card-text">{{i.desc}}</p>
+    					<a href="{% url 'accom:book' i.name %}" class="btn btn-primary">view Offers</a>
+					</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+<!--==============================footer=================================-->
+		<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="socials">
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-google-plus"></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script>
+		$(function (){
+			$('#bookingForm').bookingForm({
+				ownerEmail: '#'
+			});
+		})
+		</script>
+
+{% endblock %}

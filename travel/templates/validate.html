@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if msg in "Insufficient fund" %}
+
+<div class="container bg-light mb-3" style="height:300px;width:700px;">
+    <h5 class="text-center text-success">{{msg}}</h5>
+    <a href="#">Try again</a>
+</div>
+
+{% else %}
+
+<div class="container bg-light mb-5" style="height:700px;width:700px;padding:30px;text-indent:80px;">
+      <h3 style="color:red;font-weight:bold;">Booked Room Details</h3>
+        {% for i in room %}
+    <p style="color:blue;font_weight:bold;font-size:20px;line-height:10px;margin-top:50px;"><b>Hotel Name:  &nbsp {{i.hotel_name.name.name}}</b></p>
+        <p style="color:purple;font_weight:bold;font-size:20px;line-height:10px;margin-top:10px;"><b>Number of Rooms:  &nbsp {{i.noof_rooms}}</b></p>
+        <p style="color:purple;font_weight:bold;font-size:20px;line-height:10px;"><b>Check in Date:  &nbsp {{i.cin_date}}</b></p>
+    <p style="color:purple;font_weight:bold;font-size:20px;line-height:10px;"><b>Check out Date:  &nbsp {{i.cout_date}}</b></p>
+    <p style="color:purple;font_weight:bold;font-size:20px;line-height:10px;"><b>Comfort Type:  &nbsp &nbsp{{i.comfort}}</b></p>
+    <p style="color:purple;font_weight:bold;font-size:20px;margin-top:0px;"><b>AMOUNT PAID:  {{tot}}Rs</b></p>
+    <p style="color:purple;font_weight:bold;font-size:20px;margin-top:0px;"><b>Number of Days:  {{day}}</b></p>
+
+        {% endfor %}
+
+</div>
+<div class="container bg-light mb-5" style="height:500px;width:700px;">
+        <h3 class="text-center" style="color:red;"><b>{{msg}}</b></h3>
+<p style="color:black;font-size:18px;margin-left:100px;line-height:30px;">For Room Cancellation or any Queries related to the stay <br>please contact:<br>
+0471 2728262<br>
+0471 3234564<br>
+Or mail to: admin@11gmail.com</p>
+
+        <h3 class="text-center text-primary">Thank you for booking Visit Again </h3>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
